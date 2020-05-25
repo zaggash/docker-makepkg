@@ -24,6 +24,8 @@ RUN \
   mkdir .gnupg && \
   touch .gnupg/gpg.conf && \
   echo "keyserver-options auto-key-retrieve" > .gnupg/gpg.conf && \
+  find ~/.gnupg -type f -exec chmod 600 {} \; && \
+  find ~/.gnupg -type d -exec chmod 700 {} \; && \
 
   git clone https://aur.archlinux.org/yay-bin.git && \
   cd yay-bin && \

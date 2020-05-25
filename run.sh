@@ -21,12 +21,19 @@ fi
 
 # * Run the build
 echo "* Run the Build ..."
-makepkg -f
+FLAGS="-f"
+if [[ -n "PGPKEY" ]]
+then
+  echo "* importing the PGP key ..."
+  echo "$PGPKEY" | base64 -d | gpg --import
+  FLAGS="$FLAGS --sign"
+fi
+makepkg "$FLAGS"
 
 # * If $EXPORT_PKG, set permissions like the PKGBUILD file and export the package
 if [[ "$EXPORT_PKG" == true ]]
 then
     echo "* Copy back the builded package ..."
-    sudo chown $(stat -c '%u:%g' /pkg/PKGBUILD) ./*.pkg.tar.xz
-    sudo mv ./*.pkg.tar.xz /pkg
+    sudo chown $(stat -c '%u:%g' /pkg/PKGBUILD) ./*.pkg.tar.*
+    sudo mv ./*.pkg.tar.* /pkg
 fi
