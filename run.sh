@@ -25,7 +25,7 @@ FLAGS="-f"
 if [[ -n "PGPKEY" ]]
 then
   echo "* importing the PGP key ..."
-  echo "$PGPKEY" | base64 -d | gpg --import
+  echo "$PGPKEY" | base64 -d | gpg --import -
   FLAGS="$FLAGS --sign"
 fi
 makepkg "$FLAGS"
