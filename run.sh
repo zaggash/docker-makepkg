@@ -21,14 +21,14 @@ fi
 
 # * Run the build
 echo "* Run the Build ..."
-FLAGS="-f"
 if [[ -n "PGPKEY" ]]
 then
   echo "* importing the PGP key ..."
   echo "$PGPKEY" | base64 -d | gpg --import -
-  FLAGS="$FLAGS --sign"
+  makepkg -f --sign
+else
+  makepkg -f
 fi
-makepkg "$FLAGS"
 
 # * If $EXPORT_PKG, set permissions like the PKGBUILD file and export the package
 if [[ "$EXPORT_PKG" == true ]]
