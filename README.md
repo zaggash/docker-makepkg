@@ -1,4 +1,9 @@
-[![Build Trigger Status](https://ci.ziggzagg.fr/api/badges/zaggash/docker-makepkg/status.svg)](https://ci.ziggzagg.fr/zaggash/docker-makepkg)
+![Drone (self-hosted) with branch](https://img.shields.io/drone/build/zaggash/docker-makepkg/master?label=Trigger&logo=drone&server=https%3A%2F%2Fci.ziggzagg.fr&style=for-the-badge)  
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/zaggash/arch-makepkg?label=build&logo=docker&style=for-the-badge)
+![Docker Image Version (latest by date)](https://img.shields.io/docker/v/zaggash/arch-makepkg?logo=docker&sort=date&style=for-the-badge)
+![MicroBadger Layers](https://img.shields.io/microbadger/layers/zaggash/arch-makepkg?logo=docker&style=for-the-badge)
+![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/zaggash/arch-makepkg?label=size&logo=docker&style=for-the-badge)
+![Docker Pulls](https://img.shields.io/docker/pulls/zaggash/arch-makepkg?label=pulls&logo=docker&style=for-the-badge)
 
 ## docker-makepkg
 
