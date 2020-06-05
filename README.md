@@ -1,3 +1,5 @@
+[![Build Trigger Status](https://ci.ziggzagg.fr/api/badges/zaggash/docker-makepkg/status.svg)](https://ci.ziggzagg.fr/zaggash/docker-makepkg)
+
 ## docker-makepkg
 
 This Docker image is used to create Archlinux packages through Docker.  
