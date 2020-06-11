@@ -7,8 +7,8 @@ cp -R /pkg /tmp/pkg
 cd /tmp/pkg
 
 # * makepkg -s cannot install AUR deps !
-# * Install (official repo + AUR) dependencies using yay.
-echo "* Install yay-bin from AUR ..."
+# * Install (official repo + AUR) dependencies using yay if needed.
+echo "* Installing  dependencies..."
 yay -Sy --noconfirm \
     $(pacman --deptest $(source ./PKGBUILD && echo ${depends[@]} ${makedepends[@]}))
 
