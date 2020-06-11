@@ -9,7 +9,10 @@ RUN \
   pacman -Syyu --noconfirm --needed \
       archlinux-keyring \
       base-devel \
-      git
+      git && \
+  # cleanup
+  rm -Rf /var/cache/pacman/pkg/ && \
+  rm -rf ~/.cache/*
 
 # * Allow builder to run as root (to install dependencies)
 RUN echo "builder ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/builder
@@ -29,7 +32,8 @@ RUN \
 
   git clone https://aur.archlinux.org/yay-bin.git && \
   cd yay-bin && \
-  makepkg -sri --clean --noconfirm --needed
+  makepkg -sri --clean --noconfirm --needed && \
+  cd .. && rm -Rf yay-bin
 
 # Build the package
 WORKDIR /pkg
