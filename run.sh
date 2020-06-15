@@ -10,7 +10,7 @@ cd /tmp/pkg
 # * Install (official repo + AUR) dependencies using yay if needed.
 echo "* Installing  dependencies..."
 yay -Sy --noconfirm \
-    $(pacman --deptest $(source ./PKGBUILD && echo ${depends[@]} ${makedepends[@]}))
+    $(pacman --deptest $(source ./PKGBUILD && echo ${depends[@]} ${checkdepends[@]} ${makedepends[@]}))
 
 # * If env $CHECKSUM_SRC, add the checksum
 if [[ "$CHECKSUM_SRC" == true  ]]
