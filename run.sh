@@ -1,6 +1,19 @@
 #!/usr/bin/env bash
 set -e
 
+# * Set Makepkg.conf settings
+numberofcores=$(nproc)
+if [ $numberofcores -gt 1 ]
+then
+        echo "$numberofcores cores available."
+        echo "Changing the makeflags for $numberofcores cores."
+        sudo sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j'$numberofcores'"/g' /etc/makepkg.conf;
+        echo "Changing the compression settings for $numberofcores cores."
+        sudo sed -i 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T 0 -z -)/g' /etc/makepkg.conf
+else
+        echo "No change."
+fi
+
 # * Make a copy so we never alter the original
 echo "* Copy PKGBUILD ..."
 cp -R /pkg /tmp/pkg
