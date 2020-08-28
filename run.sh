@@ -22,7 +22,7 @@ cd /tmp/pkg
 # * makepkg -s cannot install AUR deps !
 # * Install (official repo + AUR) dependencies using yay if needed.
 echo "* Installing  dependencies..."
-yay -Sy --noconfirm \
+yay -Sy --noconfirm --overwrite /usr/include/crypt.h --overwrite /usr/lib/libcrypt.so \
     $(pacman --deptest $(source ./PKGBUILD && echo ${depends[@]} ${checkdepends[@]} ${makedepends[@]}))
 
 # * If env $CHECKSUM_SRC, add the checksum
