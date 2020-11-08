@@ -22,7 +22,7 @@ cd /tmp/pkg
 # * makepkg -s cannot install AUR deps !
 # * Install (official repo + AUR) dependencies using yay if needed.
 echo "* Installing  dependencies..."
-yay -Syyu
+yay -Syyu --noconfirm
 yay -Sy --noconfirm \
     $(pacman --deptest $(source ./PKGBUILD && echo ${depends[@]} ${checkdepends[@]} ${makedepends[@]}))
 
