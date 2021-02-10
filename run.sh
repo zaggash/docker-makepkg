@@ -35,7 +35,8 @@ fi
 
 # * Run the build
 echo "* Run the Build ..."
-if [[ -n "PGPKEY" ]]
+#* If env $PGPKEY is empty, do not sign the package
+if [[ -n "$PGPKEY" ]]
 then
   echo "* importing the PGP key ..."
   echo "$PGPKEY" | base64 -d | gpg --import -
