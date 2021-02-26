@@ -9,7 +9,8 @@ RUN \
   pacman -Syyu --noconfirm --needed \
       archlinux-keyring \
       base-devel \
-      git && \
+      git \
+      rsync && \
   # * makepkg cannot (and should not) be run as root
   useradd -m builder && \
   # * Allow builder to run as root (to install dependencies)

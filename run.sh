@@ -16,7 +16,7 @@ fi
 
 # * Make a copy so we never alter the original
 echo "* Copy PKGBUILD ..."
-cp -R /pkg /tmp/pkg
+rsync -av --exclude=".*" /pkg/ /tmp/pkg/
 cd /tmp/pkg
 
 # * makepkg -s cannot install AUR deps !
