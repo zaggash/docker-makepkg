@@ -10,9 +10,65 @@ trigger:
     trigger_build
 
 steps:
-- name: trigger_dockerhub
-  image: plugins/webhook
+- name: build_patched-archlinux
+  image: plugins/docker
   settings:
-    urls:
-      from_secret: WEBHOOK_URL
-    method: POST
+    repo: zaggash/archlinux
+    tags: glibc-patched
+    dockerfile: Dockerfile.archlinux
+    username:
+      from_secret: DOCKER_USERNAME
+    password:
+      from_secret: DOCKER_PASSWORD
+    pull_image: true
+    no_cache: true
+    purge: true
+
+- name: notify_telegram_patched-archlinux
+  image: appleboy/drone-telegram
+  settings:
+    token:
+      from_secret: TELEGRAM_TOKEN
+    to:
+      from_secret: TELEGRAM_GROUPID
+    format: markdown
+    message: >
+      ❌ zaggash/archlinux:glibc-patched  
+         Image build #{{build.number}} from `{{repo.name}}` failed.  
+      🌐 {{ build.link }}
+  when:
+    status:
+    - failure
+
+
+- name: build_arch-makepkg
+  image: plugins/docker
+  settings:
+    repo: zaggash/arch-makepkg
+    tags: latest
+    dockerfile: Dockerfile
+    username:
+      from_secret: DOCKER_USERNAME
+    password:
+      from_secret: DOCKER_PASSWORD
+    pull_image: true
+    no_cache: true
+    purge: true
+
+- name: notify_telegram_arch-makepkg
+  image: appleboy/drone-telegram
+  settings:
+    token:
+      from_secret: TELEGRAM_TOKEN
+    to:
+      from_secret: TELEGRAM_GROUPID
+    format: markdown
+    message: >
+      ❌ zaggash/arch-makepkg:latest
+         Image build #{{build.number}} from `{{repo.name}}` failed.
+      🌐 {{ build.link }}
+  when:
+    status:
+    - failure
+
+
