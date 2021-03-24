@@ -1,4 +1,4 @@
-FROM zaggash/archlinux:glibc-patched
+FROM archlinux:base
 
 COPY run.sh /run.sh
 

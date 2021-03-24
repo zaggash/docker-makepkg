@@ -10,40 +10,10 @@ trigger:
     trigger_build
 
 steps:
-- name: build_patched-archlinux
-  image: plugins/docker
-  settings:
-    repo: zaggash/archlinux
-    tags: glibc-patched
-    dockerfile: Dockerfile.archlinux
-    username:
-      from_secret: DOCKER_USERNAME
-    password:
-      from_secret: DOCKER_PASSWORD
-    pull_image: true
-    no_cache: true
-    purge: true
-
-- name: notify_telegram_patched-archlinux
-  image: appleboy/drone-telegram
-  settings:
-    token:
-      from_secret: TELEGRAM_TOKEN
-    to:
-      from_secret: TELEGRAM_GROUPID
-    format: markdown
-    message: >
-      ❌ zaggash/archlinux:glibc-patched  
-         Image build #{{build.number}} from `{{repo.name}}` failed.  
-      🌐 {{ build.link }}
-  when:
-    status:
-    - failure
-
-
 - name: build_arch-makepkg
-  image: plugins/docker
+  image: plugins/kaniko
   settings:
+    registry: https://index.docker.io/v1/
     repo: zaggash/arch-makepkg
     tags: latest
     dockerfile: Dockerfile
@@ -51,11 +21,8 @@ steps:
       from_secret: DOCKER_USERNAME
     password:
       from_secret: DOCKER_PASSWORD
-    pull_image: true
-    no_cache: true
-    purge: true
 
-- name: notify_telegram_arch-makepkg
+- name: notify_telegram
   image: appleboy/drone-telegram
   settings:
     token:
