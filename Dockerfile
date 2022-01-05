@@ -9,6 +9,7 @@ RUN \
   pacman -Syyu --noconfirm --needed \
       archlinux-keyring \
       base-devel \
+      python \
       git \
       rsync && \
   # * makepkg cannot (and should not) be run as root
