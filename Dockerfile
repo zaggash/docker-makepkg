@@ -7,6 +7,7 @@ RUN \
   chmod 755 /run.sh && \
   # * Install needed packages
   pacman -Syyu --noconfirm --needed \
+      --ignore filesystem \
       archlinux-keyring \
       python \
       git \
