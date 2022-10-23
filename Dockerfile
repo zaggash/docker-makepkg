@@ -1,4 +1,4 @@
-FROM archlinux:base
+FROM archlinux:base-devel
 
 COPY run.sh /run.sh
 
@@ -8,7 +8,6 @@ RUN \
   # * Install needed packages
   pacman -Syyu --noconfirm --needed \
       archlinux-keyring \
-      base-devel \
       python \
       git \
       rsync && \
