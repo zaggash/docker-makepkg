@@ -9,6 +9,7 @@ RUN \
   pacman -Syyu --noconfirm --needed \
       --ignore filesystem \
       archlinux-keyring \
+      cmake \
       python \
       git \
       rsync && \
