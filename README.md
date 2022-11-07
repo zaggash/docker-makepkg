@@ -18,11 +18,12 @@ docker run -e EXPORT_PKG=true -e CHECKSUM_SRC=true -e PGPKEY="$PGP_KEY" -v "$(pw
 
 Where:  
 ```
--v "$(pwd):/pkg"             | bind mount a local folder to the container working dir.  
-
+-v "$(pwd):/pkg"             | bind mount a local folder to the container working dir  
 -e EXPORT_PKG=true/false     | Used to export build package to the mounted folder  
 -e CHECKSUM_SRC=true/false   | Used to verify checksum from the downloaded source and not from the PKGBUILD hash  
 -e PGPKEY="$PGP_KEY"         | Used to sign the package with $PGP_KEY, $PGP_KEY should be encoded in base64  
-                             |
-                             | PGP_KEY=$(base64 /path/to/key.pgp)
+                             | ....PGP_KEY=$(base64 /path/to/key.pgp)  
+                             |  
+-e CUSTOM_EXEC="{cmds}"      | Used to run custom bash commands before the build  
+                             | ....CUSTOM_EXEC="ls ./ && rm -f file"  
 ```
