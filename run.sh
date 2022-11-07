@@ -33,13 +33,26 @@ then
   makepkg -g >> ./PKGBUILD
 fi
 
+#* If env $PGPKEY is empty, do not add the key
+if [[ -n "$PGPKEY" ]]
+then
+  echo "* importing the PGP key ..."
+  echo "$PGPKEY" | base64 -d | gpg --import -
+fi
+
+#* Run Custom commands
+if [[ -n "$CUSTOM_EXEC" ]]
+then
+  echo "* Run Pre-build commands ..."
+  echo "${CUSTOM_EXEC}" > /tmp/custom_exec.sh
+  bash /tmp/custom_exec.sh
+fi 
+
 # * Run the build
 echo "* Run the Build ..."
 #* If env $PGPKEY is empty, do not sign the package
 if [[ -n "$PGPKEY" ]]
 then
-  echo "* importing the PGP key ..."
-  echo "$PGPKEY" | base64 -d | gpg --import -
   makepkg -f --sign
 else
   makepkg -f
