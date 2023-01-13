@@ -6,9 +6,9 @@ on:
     branches:
       - master
     paths:
+      - "**"
+      - "!.github/**"
       - ".github/workflows/schedule-docker-build-push.yaml"
-      - "./Dockerfile"
-      - "./run.sh"
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+'
 
@@ -17,12 +17,13 @@ jobs:
     name: Build Container image
     uses: zaggash/gh-workflows/.github/workflows/run-docker-build-push.yaml@main
     with:
-      dockerhub-namespace: "zaggash"
+      dockerhub-account: "zaggash"
+      github-account: "zaggash"
       image-name: "arch-makepkg"
       context: "./"
       dockerfile: "./Dockerfile"
     secrets:
       docker_username: ${{ secrets.DOCKER_USERNAME }}
       docker_password: ${{ secrets.DOCKER_PASSWORD }}
-      app_id: ${{ secrets.ZAGGBOT_APP_ID }}
-      app_private_key: ${{ secrets.ZAGGBOT_APP_PRIVATE_KEY }}
+      gh_username: ${{ secrets.GH_USERNAME }}
+      gh_token: ${{ secrets.PACKAGES_TOKEN }}
