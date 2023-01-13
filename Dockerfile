@@ -1,4 +1,4 @@
-FROM archlinux:base-devel
+FROM archlinux:base-devel@sha256:3a64011140ee44f1c11c62abdb0426b04791db4c342e7d092932ca9a583e75b5
 
 COPY run.sh /run.sh
 
@@ -7,7 +7,6 @@ RUN \
   chmod 755 /run.sh && \
   # * Install needed packages
   pacman -Syyu --noconfirm --needed \
-      --ignore filesystem \
       archlinux-keyring \
       cmake \
       python \
@@ -33,10 +32,10 @@ RUN \
   find ~/.gnupg -type f -exec chmod 600 {} \; && \
   find ~/.gnupg -type d -exec chmod 700 {} \; && \
   # * Install yay for AUR deps
-  git clone https://aur.archlinux.org/yay.git && \
-  cd yay && \
+  git clone https://aur.archlinux.org/yay-bin.git && \
+  cd yay-bin && \
   makepkg -sri --clean --noconfirm --needed && \
-  cd .. && rm -Rf yay
+  cd .. && rm -Rf yay-bin
 
 # Build the package
 WORKDIR /pkg
