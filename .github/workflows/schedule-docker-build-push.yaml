@@ -15,7 +15,7 @@ on:
 jobs:
   build-image:
     name: Build Container image
-    uses: zaggash/gh-workflows/.github/workflows/run-docker-build-push.yaml@main
+    uses: zaggash/gh-workflows/.github/workflows/run-docker-build-push-semver.yaml@main
     with:
       dockerhub-account: "zaggash"
       github-account: "zaggash"
