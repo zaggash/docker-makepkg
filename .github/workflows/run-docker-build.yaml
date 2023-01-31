@@ -1,4 +1,4 @@
-name: Schedule - Build Container image
+name: Build image
 
 on:
   workflow_dispatch:
@@ -8,14 +8,14 @@ on:
     paths:
       - "**"
       - "!.github/**"
-      - ".github/workflows/schedule-docker-build-push.yaml"
+      - ".github/workflows/run-docker-build.yaml"
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
   build-image:
-    name: Build Container image
-    uses: zaggash/gh-workflows/.github/workflows/run-docker-build-push-semver.yaml@main
+    name: Build image
+    uses: zaggash/gh-workflows/.github/workflows/action_docker-build-push-semver.yaml@main
     with:
       dockerhub-account: "zaggash"
       github-account: "zaggash"

@@ -1,4 +1,4 @@
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zaggash/docker-makepkg/schedule-docker-build-push.yaml?label=IMAGE%20BUILD&logo=Github%20Actions&logoColor=white&style=for-the-badge)  
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zaggash/docker-makepkg/run-docker-build.yaml?label=IMAGE%20BUILD&logo=Github%20Actions&logoColor=white&style=for-the-badge)  
 ![Docker Image Version (semver)](https://img.shields.io/docker/v/zaggash/arch-makepkg?logo=docker&sort=date&style=for-the-badge)
 ![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/zaggash/arch-makepkg?logo=docker&style=for-the-badge)
 ![Docker Pulls](https://img.shields.io/docker/pulls/zaggash/arch-makepkg?label=pulls&logo=docker&style=for-the-badge)
