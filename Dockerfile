@@ -1,4 +1,4 @@
-FROM archlinux:base-devel@sha256:e0d68cc44bb4471517c6e03c6152fb965f8608c8adbec959decf46415a7b7737
+FROM archlinux:base-devel@sha256:d26fbd1b7efac6a9eb0857ed1e6210d108014a5849f26cac84745fe4cb79e5a6
 
 COPY run.sh /run.sh
 
