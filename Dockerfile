@@ -9,7 +9,10 @@ RUN \
   pacman -Syyu --noconfirm --needed \
       archlinux-keyring \
       cmake \
+      sudo \
       python \
+      binutils \
+      fakeroot \
       git \
       rsync && \
   # * makepkg cannot (and should not) be run as root
