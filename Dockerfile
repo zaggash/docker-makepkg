@@ -8,6 +8,7 @@ RUN \
   # * Install needed packages
   pacman -Syyu --noconfirm --needed \
       archlinux-keyring \
+      base-devel \
       cmake \
       sudo \
       python \
