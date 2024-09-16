@@ -36,10 +36,10 @@ RUN \
   find ~/.gnupg -type f -exec chmod 600 {} \; && \
   find ~/.gnupg -type d -exec chmod 700 {} \; && \
   # * Install yay for AUR deps
-  git clone https://aur.archlinux.org/yay-bin.git && \
-  cd yay-bin && \
+  git clone https://aur.archlinux.org/yay.git && \
+  cd yay && \
   makepkg -sri --clean --noconfirm --needed && \
-  cd .. && rm -Rf yay-bin
+  cd .. && rm -Rf yay
 
 # Build the package
 WORKDIR /pkg
