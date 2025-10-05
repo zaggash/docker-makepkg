@@ -37,7 +37,8 @@ RUN \
   find ~/.gnupg -type f -exec chmod 600 {} \; && \
   find ~/.gnupg -type d -exec chmod 700 {} \; && \
   # * Install yay for AUR deps
-  git clone https://aur.archlinux.org/yay.git && \
+  # * Using github mirror to bypass AUR DDOS
+  git clone --single-branch --branch yay https://github.com/archlinux/aur.git yay && \
   cd yay && \
   makepkg -sri --clean --noconfirm --needed && \
   cd .. && rm -Rf yay
