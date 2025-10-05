@@ -15,6 +15,7 @@ RUN \
       binutils \
       fakeroot \
       git \
+      jq \
       rsync && \
   # * makepkg cannot (and should not) be run as root
   useradd -m builder && \
