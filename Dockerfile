@@ -1,4 +1,4 @@
-FROM ghcr.io/archlinux/archlinux@sha256:24bd9134f828780b847419581105bd40b6dd9182ea7b12a0a0bb42b8562f9796
+FROM ghcr.io/archlinux/archlinux@sha256:09d7c61fa6a0b6ec21020d75dec1cf901208ee601407fe6ef0f7988c05b94d19
 
 COPY run.sh /run.sh
 
